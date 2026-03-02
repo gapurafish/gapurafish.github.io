@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GAPURA | PT Tiga Pusaka Samudera - Global Fishery Distribution</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Outfit:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet"/>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#00567a", 
+              secondary: "#14a1c0",
+              "background-light": "#ffffff",
+              "background-dark": "#0f172a",
+              "whatsapp": "#25D366",
+            },
+            fontFamily: {
+              display: ["Outfit", "sans-serif"],
+              sans: ["Inter", "sans-serif"],
+            },
+            borderRadius: {
+              DEFAULT: "0.5rem",
+              'large': "1.5rem",
+            },
+            animation: {
+              'pulse-slow': 'pulse-custom 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            },
+            keyframes: {
+              'pulse-custom': {
+                '0%, 100%': { opacity: '1', transform: 'scale(1)' },
+                '50%': { opacity: '.85', transform: 'scale(1.05)' },
+              }
+            }
+          },
+        },
+      };
+      function toggleDarkMode() {
+        document.documentElement.classList.toggle('dark');
+      }
+      function toggleChat() {
+        const popup = document.getElementById('chat-popup');
+        popup.classList.toggle('hidden');
+        popup.classList.toggle('flex');
+      }
+      // FUNGSI KIRIM WHATSAPP DARI FORM UTAMA
+        function sendToWhatsApp() {
+            const name = document.getElementById('form-name').value;
+            const email = document.getElementById('form-email').value;
+            const message = document.getElementById('form-message').value;
+
+            if (!name || !email || !message) {
+                alert("Harap isi semua kolom sebelum mengirim.");
+                return;
+            }
+
+            const phoneNumber = "6288809978800"; 
+            const text = `Halo GAPURA, saya ingin bertanya:%0A%0A*Nama:* ${name}%0A*Email:* ${email}%0A*Pesan:* ${message}`;
+            const url = `https://wa.me/${phoneNumber}?text=${text}`;
+
+            window.open(url, '_blank').focus();
+        }
+
+        // FUNGSI KIRIM WHATSAPP DARI CHAT POPUP (OPTIONAL)
+        function sendQuickChat() {
+            const chatInput = document.getElementById('chat-input').value;
+            if (!chatInput) return;
+
+            const phoneNumber = "6288809978800";
+            const text = `Halo Admin GAPURA, %0A${chatInput}`;
+            const url = `https://wa.me/${phoneNumber}?text=${text}`;
+            
+            window.open(url, '_blank').focus();
+        }
+      
+    </script>
+<style type="text/tailwindcss">
+      .glass-effect {
+        backdrop-filter: blur(12px);
+        background-color: rgba(255, 255, 255, 0.8);
+      }
+      .dark .glass-effect {
+        background-color: rgba(15, 23, 42, 0.8);
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .scrollbar-hide::-webkit-scrollbar {
+        display: none;
+      }
+      .scrollbar-hide {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+    </style>
+</head>
+<body class="font-sans antialiased text-slate-900 bg-background-light dark:text-slate-100 dark:bg-background-dark transition-colors duration-300">
+<nav class="fixed top-0 w-full z-50 glass-effect border-b border-slate-200 dark:border-slate-800">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between items-center h-20">
+<div class="flex items-center gap-3">
+<img alt="GAPURA Logo" class="h-10 w-10 rounded-lg object-contain bg-white p-1 shadow-sm" src="image/Gapura Logo .png"/>
+<span class="text-2xl font-display font-bold tracking-tight text-primary">GAPURA</span>
+</div>
+<div class="hidden md:flex items-center space-x-8">
+<a class="font-medium hover:text-primary transition-colors" href="#home">Home</a>
+<a class="font-medium hover:text-primary transition-colors" href="#about">About Us</a>
+<a class="font-medium hover:text-primary transition-colors" href="#vision">Vision &amp; Mission</a>
+<a class="font-medium hover:text-primary transition-colors" href="#products">Products</a>
+<a class="px-5 py-2.5 bg-primary text-white rounded-full font-semibold hover:bg-opacity-90 transition-all shadow-md" href="#contact">Get in Touch</a>
+<button class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" onclick="toggleDarkMode()">
+<span class="material-icons-outlined dark:hidden">dark_mode</span>
+<span class="material-icons-outlined hidden dark:block">light_mode</span>
+</button>
+</div>
+<div class="md:hidden flex items-center gap-4">
+<button class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" onclick="toggleDarkMode()">
+<span class="material-icons-outlined dark:hidden">dark_mode</span>
+<span class="material-icons-outlined hidden dark:block text-slate-100">light_mode</span>
+</button>
+<span class="material-icons-outlined text-3xl">menu</span>
+</div>
+</div>
+</div>
+</nav>
+<section class="relative min-h-screen flex items-center pt-20 overflow-hidden" id="home">
+<div class="absolute inset-0 z-0">
+<img alt="Fishery raw materials background" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBOqoFu3nod4znaexGRZBjPC4ged8S2pDZu1I0UtO64TFxT0ZAFceCfuRn5MhBWbim2ql7mxDOXqtT36-FGnRO99UtG3_VazyktfdOueMzf4Vv7e0E6YTK1lUVvAcsEaEMevuDZSPe7oaF5TMORUzPoMUS7lMDBfMNuSCvsC1r0UZg8q5pXUaxAbRNgI20YA88PZRBi7Z3BH78huhp7A7sNcdMxdItt09ISosa3dCXauxw7INPit4-dsXSnDrEygNA22mZojOJjPYGu"/>
+<div class="absolute inset-0 bg-gradient-to-r from-white via-white/80 to-transparent dark:from-background-dark dark:via-background-dark/80 dark:to-transparent"></div>
+</div>
+<div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+<div class="max-w-2xl">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary dark:bg-primary/20 mb-6 border border-primary/20">
+<span class="flex h-2 w-2 rounded-full bg-primary animate-pulse"></span>
+<span class="text-sm font-semibold uppercase tracking-wider">Premium Fishery Distribution</span>
+</div>
+<h1 class="text-5xl md:text-7xl font-display font-bold text-slate-900 dark:text-white leading-tight mb-6">
+                Sustaining the Sea, <br/><span class="text-primary">Supplying the World.</span>
+</h1>
+<p class="text-lg md:text-xl text-slate-600 dark:text-slate-300 mb-10 leading-relaxed">
+                PT Tiga Pusaka Samudera (GAPURA) menyediakan bahan baku perikanan berkualitas tinggi dengan fokus pada keberlanjutan, kesegaran, dan keunggulan distribusi global..
+            </p>
+<div class="flex flex-col sm:flex-row gap-4">
+<a class="px-8 py-4 bg-primary text-white rounded-xl font-bold text-center hover:shadow-xl hover:-translate-y-1 transition-all" href="#products">
+                    Explore Our Products
+                </a>
+<a class="px-8 py-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white rounded-xl font-bold text-center hover:bg-slate-50 dark:hover:bg-slate-700 transition-all" href="#about">
+                    Our Story
+                </a>
+</div>
+</div>
+</div>
+</section>
+<section class="py-24 bg-slate-50 dark:bg-slate-900/50" id="about">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid lg:grid-cols-2 gap-16 items-center">
+<div class="relative">
+<div class="aspect-square rounded-large overflow-hidden shadow-2xl">
+<img alt="Sustainable fishing vessel" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAznA1DmVgLYC7jwEB47PTirk7cMTzB8oNGbQ5z8oU-H0lsxDxEufQZT0sQNMaUA6NEuos1g6OdxlOJh8lpiz1Q4dhBdykfWjU3EvmZjNKv9PH53b2I6lY9zW01nzD0sCyj1WER7jca8OwR_p3g3z-KloczfC8Cq-yq5Q7QMtvJxsRd9w251fjG7cyOi8gHxtdgprVO5MxrViKR-AFVLFKNDZLB4ODK_mzG2PhIFBQjuoCS2319GZtxu9rJKo_ZFWkSDA1CVmCvD-2r"/>
+</div>
+<div class="absolute -bottom-8 -right-8 bg-primary p-8 rounded-large text-white shadow-xl hidden md:block">
+<p class="text-4xl font-bold mb-1">13+</p>
+<p class="text-sm font-medium opacity-90 uppercase tracking-wide">Years of Excellence</p>
+</div>
+</div>
+<div>
+<h2 class="text-primary font-bold uppercase tracking-widest text-sm mb-4">About GAPURA</h2>
+<h3 class="text-3xl md:text-4xl font-display font-bold mb-6">Menuju Gobal Market yang Andal</h3>
+<p class="text-slate-600 dark:text-slate-400 mb-6 leading-relaxed text-lg">
+                    Kami menjembatani kesenjangan antara penangkapan berkelanjutan dan permintaan konsumen global. Sebagai distributor utama bahan baku perikanan, komitmen kami terletak pada menjaga integritas rantai dingin dari kapal hingga tujuan.
+                </p>
+<div class="space-y-4">
+<div class="flex items-start gap-4 p-4 rounded-xl bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700 shadow-sm">
+<span class="material-icons-outlined text-primary text-3xl">verified</span>
+<div>
+<h4 class="font-bold">Quality Assured</h4>
+<p class="text-sm text-slate-500">Inspeksi ketat di setiap tahap rantai pasokan.</p>
+</div>
+</div>
+<div class="flex items-start gap-4 p-4 rounded-xl bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700 shadow-sm">
+<span class="material-icons-outlined text-primary text-3xl">public</span>
+<div>
+<h4 class="font-bold">Jangkauan luas</h4>
+<p class="text-sm text-slate-500">Menyasar pengiriman kepenjuru daerah di indonesia.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-24 bg-white dark:bg-background-dark" id="vision">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center mb-16">
+<h2 class="text-primary font-bold uppercase tracking-widest text-sm mb-4">Our Purpose</h2>
+<h3 class="text-3xl md:text-5xl font-display font-bold">Vision &amp; Mission</h3>
+</div>
+<div class="grid md:grid-cols-2 gap-8 lg:gap-12">
+<div class="relative group p-8 lg:p-12 rounded-large bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800 transition-all hover:shadow-2xl hover:-translate-y-2 overflow-hidden">
+<div class="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity">
+<span class="material-symbols-outlined text-9xl">visibility</span>
+</div>
+<div class="relative z-10">
+<div class="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mb-8">
+<span class="material-symbols-outlined text-primary text-4xl">visibility</span>
+</div>
+<h4 class="text-2xl font-display font-bold mb-6 text-slate-900 dark:text-white">Visi</h4>
+<p class="text-lg text-slate-600 dark:text-slate-400 leading-relaxed italic">
+                        "Menjadi pemimpin yang paling dipercaya di dunia dalam distribusi perikanan berkelanjutan, mempelopori inovasi yang menghubungkan kekayaan laut dengan permintaan global sekaligus melestarikan ekosistem laut untuk generasi mendatang.."
+                    </p>
+</div>
+</div>
+<div class="relative group p-8 lg:p-12 rounded-large bg-primary text-white transition-all hover:shadow-2xl hover:-translate-y-2 overflow-hidden">
+<div class="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-9xl">flag</span>
+</div>
+<div class="relative z-10">
+<div class="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center mb-8">
+<span class="material-symbols-outlined text-white text-4xl">flag</span>
+</div>
+<h4 class="text-2xl font-display font-bold mb-6">Misi</h4>
+<ul class="space-y-6">
+<li class="flex items-start gap-4">
+<span class="material-symbols-outlined mt-1 text-secondary">check_circle</span>
+<div>
+<h5 class="font-bold text-lg mb-1">Quality Assurance</h5>
+<p class="text-white/80 text-sm">Mempertahankan integritas rantai dingin absolut dan standar inspeksi yang ketat dari sumber hingga pengiriman..</p>
+</div>
+</li>
+<li class="flex items-start gap-4">
+<span class="material-symbols-outlined mt-1 text-secondary">check_circle</span>
+<div>
+<h5 class="font-bold text-lg mb-1">Ethical Sourcing</h5>
+<p class="text-white/80 text-sm">Bermitra secara eksklusif dengan perikanan berkelanjutan yang menghormati keanekaragaman hayati dan praktik ketenagakerjaan yang adil.
+.</p>
+</div>
+</li>
+<li class="flex items-start gap-4">
+<span class="material-symbols-outlined mt-1 text-secondary">check_circle</span>
+<div>
+<h5 class="font-bold text-lg mb-1">Global Excellence</h5>
+<p class="text-white/80 text-sm">Mengoptimalkan jaringan logistik untuk memastikan distribusi global yang lancar, tepat waktu, dan efisien..</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-24 bg-slate-50 dark:bg-slate-900/50" id="products">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center mb-16">
+<h2 class="text-primary font-bold uppercase tracking-widest text-sm mb-4">Our Catalog</h2>
+<h3 class="text-3xl md:text-5xl font-display font-bold">Premium Raw Materials</h3>
+</div>
+<div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+<div class="group relative overflow-hidden rounded-large bg-slate-100 dark:bg-slate-800">
+<img alt="Yellowfin Tuna" class="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-500" src="image/Ikan Beku.jpg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-80"></div>
+<div class="absolute bottom-0 left-0 p-8 text-white">
+<h4 class="text-2xl font-bold mb-2">Frozen Fish</h4>
+<p class="text-sm opacity-80 mb-4">Menjual bermacam jenis produk ikan frozen.</p>
+<button class="text-sm font-semibold flex items-center gap-2 group/btn">
+                        Learn More <span class="material-icons-outlined text-sm group-hover/btn:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</div>
+</div>
+<div class="group relative overflow-hidden rounded-large bg-slate-100 dark:bg-slate-800">
+<img alt="Vannamei Shrimp" class="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-500" src="image/Udang Beku.jpg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-80"></div>
+<div class="absolute bottom-0 left-0 p-8 text-white">
+<h4 class="text-2xl font-bold mb-2">Frozen Shrimp</h4>
+<p class="text-sm opacity-80 mb-4">Udang Frozen No Skin berbagai size.</p>
+<button class="text-sm font-semibold flex items-center gap-2 group/btn">
+                        Learn More <span class="material-icons-outlined text-sm group-hover/btn:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</div>
+</div>
+<div class="group relative overflow-hidden rounded-large bg-slate-100 dark:bg-slate-800">
+<img alt="Atlantic Mackerel" class="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-500" src="image/food trade.webp"/>
+<div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-80"></div>
+<div class="absolute bottom-0 left-0 p-8 text-white">
+<h4 class="text-2xl font-bold mb-2">Food Trade</h4>
+<p class="text-sm opacity-80 mb-4">makanan, minuman, buah, dan sayur sayuran.</p>
+<button class="text-sm font-semibold flex items-center gap-2 group/btn">
+                        Learn More <span class="material-icons-outlined text-sm group-hover/btn:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-24" id="contact">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="bg-primary rounded-large p-8 md:p-16 relative overflow-hidden shadow-2xl">
+<div class="absolute top-0 right-0 -mt-20 -mr-20 w-80 h-80 bg-white/10 rounded-full blur-3xl"></div>
+<div class="absolute bottom-0 left-0 -mb-20 -ml-20 w-80 h-80 bg-secondary/20 rounded-full blur-3xl"></div>
+<div class="relative z-10 grid lg:grid-cols-2 gap-16 items-center">
+<div class="text-white">
+<h2 class="text-3xl md:text-5xl font-display font-bold mb-6">Ready to source the best?</h2>
+<p class="text-white/80 text-lg mb-8">Hubungi tim distribusi global kami untuk harga grosir dan permintaan logistik khusus.</p>
+<div class="space-y-6">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center">
+<span class="material-icons-outlined">mail</span>
+</div>
+<div>
+<p class="text-xs text-white/60 uppercase font-bold tracking-wider">Email Us</p>
+<p class="font-semibold">gapurafood.com</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center">
+<span class="material-icons-outlined">call</span>
+</div>
+<div>
+<p class="text-xs text-white/60 uppercase font-bold tracking-wider">Call Us</p>
+<p class="font-semibold">+62 888-0997-8800</p>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900 p-8 rounded-large shadow-xl">
+  <form class="space-y-4" onsubmit="event.preventDefault();">
+    <div>
+      <label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Full Name</label>
+      <input id="wa-name" class="w-full rounded-lg border-slate-200 dark:border-slate-700 dark:bg-slate-800 dark:text-white focus:ring-primary focus:border-primary px-4 py-3" placeholder="John Doe" type="text" required/>
+    </div>
+    <div>
+      <label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Company Email</label>
+      <input id="wa-email" class="w-full rounded-lg border-slate-200 dark:border-slate-700 dark:bg-slate-800 dark:text-white focus:ring-primary focus:border-primary px-4 py-3" placeholder="john@company.com" type="email" required/>
+    </div>
+    <div>
+      <label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Message</label>
+      <textarea id="wa-message" class="w-full rounded-lg border-slate-200 dark:border-slate-700 dark:bg-slate-800 dark:text-white focus:ring-primary focus:border-primary px-4 py-3" placeholder="Inquiry about bulk frozen tuna shipments..." rows="4" required></textarea>
+    </div>
+    <button type="button" onclick="sendToWhatsApp()" class="w-full py-4 bg-primary text-white rounded-lg font-bold hover:bg-slate-800 dark:hover:bg-slate-700 transition-colors">
+      Send Inquiry via WhatsApp
+    </button>
+  </form>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<footer class="bg-slate-900 text-slate-400 py-16">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid md:grid-cols-4 gap-12 mb-12">
+<div class="col-span-1 md:col-span-2">
+<div class="flex items-center gap-3 mb-6">
+<img alt="GAPURA Logo" class="h-8 w-8 rounded-lg brightness-150" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAAsCqZ5odA_9etkriMCXeDGxQ1h6KWC2Z7Fokvoha1KhN9uRdkoFKW1d1C7PuGDYpy6fLqnru7a-lYJco4YD14EQ-1-FcsdZF0_tCp_K1RD7vY7uCSov7Vnu256Dl9EJY8WYOszz8OpqIOdPmY_YNjD5myYYgbjcqJpnA_qhh4O0IsatLqP_1BvXbHoLTGuENS8hdGaT59Rfp4V0bDVMzqXGyfIJyimDx8K8oyKSrFB7PU81ZZlMvyjyK09sGpPG4NdjYjLyPZnjzO"/>
+<span class="text-2xl font-display font-bold tracking-tight text-white">GAPURA</span>
+</div>
+<p class="max-w-sm text-sm leading-relaxed">
+                    PT Tiga Pusaka Samudera is a leading global supplier of premium fishery raw materials. We believe in sustainable practices and high-quality cold-chain distribution.
+                </p>
+</div>
+<div>
+<h5 class="text-white font-bold mb-6">Navigation</h5>
+<ul class="space-y-4 text-sm">
+<li><a class="hover:text-white transition-colors" href="#">About Us</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Product Catalog</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Logistics Network</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Sustainability</a></li>
+</ul>
+</div>
+<div>
+<h5 class="text-white font-bold mb-6">Connect</h5>
+<div class="flex space-x-4 mb-6">
+<a class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-primary transition-colors" href="#"><span class="material-icons-outlined">public</span></a>
+<a class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-primary transition-colors" href="#"><span class="material-icons-outlined">groups</span></a>
+<a class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-primary transition-colors" href="#"><span class="material-icons-outlined">alternate_email</span></a>
+</div>
+<p class="text-xs">Jakarta Head Office:<br/>Menara Samudera, Fl 18<br/>Jakarta, Indonesia 10210</p>
+</div>
+</div>
+<div class="pt-8 border-t border-slate-800 text-xs flex flex-col md:flex-row justify-between gap-4">
+<p>© 2024 PT Tiga Pusaka Samudera (GAPURA). All rights reserved.</p>
+<div class="flex gap-6">
+<a class="hover:text-white" href="#">Privacy Policy</a>
+<a class="hover:text-white" href="#">Terms of Service</a>
+</div>
+</div>
+</div>
+</footer>
+<div class="fixed bottom-6 right-6 z-[100] flex flex-col items-end">
+    <div class="hidden flex-col w-[350px] mb-4 bg-white dark:bg-slate-900 rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-800 overflow-hidden transform transition-all duration-300" id="chat-popup">
+        <div class="bg-primary p-4 flex items-center gap-3">
+            <div class="relative">
+                <div class="w-10 h-10 rounded-full bg-slate-200"></div>
+                <span class="absolute bottom-0 right-0 w-3 h-3 bg-whatsapp border-2 border-primary rounded-full"></span>
+            </div>
+            <div>
+                <h4 class="text-white font-bold text-sm leading-none">Admin GAPURA</h4>
+                <p class="text-white/70 text-[10px] mt-1 uppercase tracking-wider">Online</p>
+            </div>
+            <button class="ml-auto text-white/70 hover:text-white transition-colors" onclick="toggleChat()">
+                <span class="material-symbols-outlined text-xl">close</span>
+            </button>
+        </div>
+        <div class="p-4 bg-slate-50 dark:bg-slate-800/50 min-h-[120px]">
+            <div class="bg-white dark:bg-slate-900 p-3 rounded-xl rounded-tl-none shadow-sm max-w-[85%] border border-slate-100 dark:border-slate-800">
+                <p class="text-xs text-slate-700 dark:text-slate-300 leading-relaxed">
+                    Halo! Ada yang bisa kami bantu mengenai produk perikanan GAPURA?
+                </p>
+            </div>
+        </div>
+        <div class="p-4 bg-white dark:bg-slate-900 border-t border-slate-100 dark:border-slate-800">
+            <div class="flex items-center gap-2">
+                <input id="chat-input" class="flex-1 bg-slate-100 dark:bg-slate-800 border-none rounded-full px-4 py-2 text-xs focus:ring-1 focus:ring-primary dark:text-white" placeholder="Tulis pesan..." type="text"/>
+                <button onclick="sendQuickChat()" class="bg-primary text-white p-2 rounded-full hover:bg-opacity-90 transition-all">
+                    <span class="material-symbols-outlined text-lg">send</span>
+                </button>
+            </div>
+        </div>
+    </div>
+<button class="w-16 h-16 bg-whatsapp text-white rounded-full shadow-lg flex items-center justify-center hover:scale-110 transition-transform animate-pulse-slow" onclick="toggleChat()">
+<svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.72.937 3.659 1.432 5.631 1.433h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"></path>
+</svg>
+</button>
+</div>
+
+</body></html>
